@@ -1,9 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
+import renderer from 'react-test-renderer';
+
+fetch = jest.fn();
+
+
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  const tree = renderer(<App />);
+  fetch.returnMockValue({
+
+  })
+  expect(tree.toJSON()).toMatchSnapshot();
 });
